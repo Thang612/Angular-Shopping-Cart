@@ -1,0 +1,16 @@
+<main>
+  <header class="container">
+    <app-cart-header [numeberItem]="numberItem"></app-cart-header>
+  </header>
+
+  <section class="container" >
+    <app-product-list [products]="products" (onRemoveProduct)="removeProduct($event)"   (onUpdateQuantity)="updateQuantity($event)"
+    ></app-product-list>
+    <h3 *ngIf="products.length === 0" style="text-align: center;">There are no product</h3>
+  </section>
+
+  <section class="container" *ngIf="products.length >0;">
+    <app-cart-promo (onCheckPromotion)="checkPromotion($event)"></app-cart-promo >
+    <app-cart-summary [totalPrice]="totalPrice" [tax]="tax" [discount] ="discount"></app-cart-summary>
+  </section>
+</main>
